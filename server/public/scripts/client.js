@@ -21,14 +21,27 @@ function sendJoke() {
   postJokes();
 }
 function postJokes() {
-  $.ajax({
-    method: 'POST',
-    url: '/api/jokes',
-    data: jokeObject,
-  }).then((response) => {
-    console.log('post joke: ', response);
-  });
-  getJokes();
+  if (
+    $('#whoseJokeIn').val() == '' ||
+    $('#questionIn').val() == '' ||
+    $('#punchlineIn').val() == ''
+  ) {
+    alert('Please input joke');
+  } else {
+    $.ajax({
+      method: 'POST',
+      url: '/api/jokes',
+      data: jokeObject,
+    })
+      .then((response) => {
+        console.log('post joke: ', response);
+        getJokes();
+      })
+      .catch((err) => {
+        console.log(err);
+        alert('WOW! Something went wrong!');
+      });
+  }
 }
 
 function getJokes() {

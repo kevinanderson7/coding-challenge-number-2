@@ -3,6 +3,6 @@ body {
   background-image: url('laughing.jpg');
   background-size: cover;
   opacity: 0.6;
-  margin: 25px;
   background-position: center center;
+  margin: 25px;
 }
